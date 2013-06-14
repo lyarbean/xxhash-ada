@@ -1,7 +1,7 @@
-with interfaces;
-use interfaces;
---  pragma Elaborate_All;
 package xxhash is
-   type bytes is array(natural range<>) of unsigned_8;
-   function xxh32(data : bytes; seed : unsigned_32) return unsigned_32;
+   pragma elaborate_body;
+   type byte is mod 2**8;
+   type bytes is array(natural range<>) of byte;
+   type word is mod 2**32;
+   function xxh32(data : bytes; seed : word) return word;
 end xxhash;
